@@ -135,7 +135,7 @@ public class PantallaJuego implements Screen {
             // Colisiones balas-asteroides
             for (int i = 0; i < balas.size(); i++) {
                 Bullet b = balas.get(i);
-                b.update();
+                b.actualizar();
                 for (int j = 0; j < balls1.size(); j++) {
                     if (b.checkCollision(balls1.get(j))) {
                         explosionSound.play();
@@ -171,7 +171,7 @@ public class PantallaJuego implements Screen {
 
         // Dibujar elementos
         for (Bullet b : balas) {
-            b.draw(batch);
+            b.dibujar(batch);
         }
         nave.draw(batch, this);
 

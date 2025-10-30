@@ -5,8 +5,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import puppy.code.Nave4;
+import puppy.code.EntidadJuego;
 
-public abstract class PowerUp {
+public abstract class PowerUp implements EntidadJuego{
     protected Sprite spr;
     protected boolean activo;
     protected float x, y;
@@ -28,16 +29,14 @@ public abstract class PowerUp {
     public abstract int getDuracion();
     public abstract float getMultiplicador();
 
+    @Override
     public void actualizar() {
-        if (activo) {
-            y -= velocidadCaida;
-            spr.setPosition(x, y);
-            if (y + spr.getHeight() < 0) {
-                activo = false;
-            }
-        }
+        if (!activo) return;
+        y -= velocidadCaida;
+        spr.setPosition(x, y);
     }
 
+    @Override
     public void dibujar(SpriteBatch batch) {
         if (activo) {
             spr.draw(batch);
@@ -49,6 +48,7 @@ public abstract class PowerUp {
     }
 
     // SOLO UNA DEFINICIÓN de getArea()
+    @Override
     public Rectangle getArea() {
         return spr.getBoundingRectangle();
     }
