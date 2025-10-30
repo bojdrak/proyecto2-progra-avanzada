@@ -68,8 +68,8 @@ public class PantallaTutorial implements Screen {
 
         // Controles
         game.getFont().draw(game.getBatch(), "Controles:", 100, 200);
-        game.getFont().draw(game.getBatch(), "Flechas: Mover nave", 120, 150);
-        game.getFont().draw(game.getBatch(), "Espacio: Disparar", 120, 110);
+        game.getFont().draw(game.getBatch(), "Flechas: Mover nave -- Presionar dos veces: Dash", 120, 150);
+        game.getFont().draw(game.getBatch(), "Z y X: Disparar", 120, 110);
 
 
         // Instrucción para continuar
