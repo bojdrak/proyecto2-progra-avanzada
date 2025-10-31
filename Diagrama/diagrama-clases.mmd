@@ -1,0 +1,189 @@
+```mermaid
+classDiagram
+direction LR
+
+%% === LibGDX (base) ===
+class ApplicationListener
+class Game {
+  +create()
+  +render()
+  +dispose()
+  #setScreen(Screen)
+  #getScreen(): Screen
+}
+class Screen {
+  <<interface>>
+  +show()
+  +render(float)
+  +resize(int,int)
+  +pause()
+  +resume()
+  +hide()
+  +dispose()
+}
+class SpriteBatch
+class TextureRegion
+class Rectangle
+class AssetManager
+
+Game <|-- SpaceNavigation
+Screen <|.. MenuScreen
+Screen <|.. GameScreen
+Screen <|.. GameOverScreen
+Screen <|.. TutorialScreen
+Screen <|.. PowerUpsScreen
+
+SpaceNavigation --> SpriteBatch
+SpaceNavigation --> AssetManager
+SpaceNavigation --> AudioManager
+SpaceNavigation --> Settings
+
+%% === Dominio propio ===
+class EntidadJuego {
+  <<interface>>
+  +update(float delta)
+  +draw(SpriteBatch batch)
+  +getBounds(): Rectangle
+  +isAlive(): boolean
+}
+
+class GameScene {
+  +update(float)
+  +draw(SpriteBatch)
+  +add(EntidadJuego)
+  +remove(EntidadJuego)
+  -entities : List~EntidadJuego~
+  -collisionSystem : CollisionSystem
+  -spawnSystem : SpawnSystem
+}
+
+class Nave4 {
+  +update(float)
+  +draw(SpriteBatch)
+  +getBounds(): Rectangle
+  +isAlive(): boolean
+  +fire()
+  +apply(PowerUp)
+  -vida:int
+  -vel:float
+  -weapon: Weapon
+}
+
+class Weapon {
+  +tryShoot(Nave4, BulletPool)
+  -cooldown: float
+  -timer: float
+  -bulletsPerShot:int
+}
+
+class Bullet {
+  +update(float)
+  +draw(SpriteBatch)
+  +getBounds(): Rectangle
+  +isAlive(): boolean
+  -vel: float
+  -ownerIsPlayer: boolean
+}
+
+class Enemigo {
+  <<abstract>>
+  +update(float)
+  +draw(SpriteBatch)
+  +getBounds(): Rectangle
+  +isAlive(): boolean
+  +onHit(int)
+  -vida:int
+  -vel:float
+}
+class EnemigoLineal
+class EnemigoZigzag
+class EnemigoPerseguidor
+
+Enemigo <|-- EnemigoLineal
+Enemigo <|-- EnemigoZigzag
+Enemigo <|-- EnemigoPerseguidor
+
+class PowerUp {
+  <<abstract>>
+  +apply(Nave4)
+  +revert(Nave4)
+  +update(float)
+  +draw(SpriteBatch)
+  +getBounds(): Rectangle
+  +isAlive(): boolean
+  -duration:float
+  -time:float
+}
+class PUInvencibilidad
+class PUVelocidad
+class PUVida
+class PUMultiplicador
+
+PowerUp <|-- PUInvencibilidad
+PowerUp <|-- PUVelocidad
+PowerUp <|-- PUVida
+PowerUp <|-- PUMultiplicador
+
+class PowerUpManager {
+  +spawnRandom()
+  +update(float)
+  +draw(SpriteBatch)
+  -activos: List~PowerUp~
+}
+
+class BulletPool {
+  +obtain(): Bullet
+  +free(Bullet)
+  -pool : Pool~Bullet~
+}
+
+class CollisionSystem {
+  +resolve(List~EntidadJuego~, Nave4, BulletPool)
+}
+
+class SpawnSystem {
+  +update(float, GameScene)
+  -timer: float
+  -difficulty: float
+}
+
+class HUD {
+  +draw(SpriteBatch)
+  -score:int
+  -highScore:int
+}
+
+class Assets {
+  +load(AssetManager)
+  +dispose(AssetManager)
+}
+
+class AudioManager {
+  +playMusic(String)
+  +playSfx(String)
+  +setVolumes(float music, float sfx)
+}
+
+class Settings {
+  +load()
+  +save()
+  +getHighScore():int
+  +setHighScore(int)
+}
+
+GameScreen --> GameScene
+GameScreen --> HUD
+GameScreen --> BulletPool
+GameScreen --> PowerUpManager
+GameScreen --> AudioManager
+
+GameScene --> CollisionSystem
+GameScene --> SpawnSystem
+GameScene --> EntidadJuego
+Nave4 ..> Weapon
+Weapon ..> BulletPool
+PowerUpManager ..> PowerUp
+CollisionSystem ..> BulletPool
+SpaceNavigation --> Settings
+SpaceNavigation --> Assets
+```
