@@ -6,7 +6,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-
 public class PantallaMenu implements Screen {
 
 	private SpaceNavigation game;
@@ -38,7 +37,7 @@ public class PantallaMenu implements Screen {
             game.setScreen(ss);
             dispose();
         }
-	}
+    }
 
 
 	@Override
