@@ -1,9 +1,9 @@
-# 🚀 Space Navigation
+# Space Navigation
 **Proyecto Java (libGDX)** – Juego tipo *arcade shooter* donde controlas una nave que debe esquivar enemigos y recolectar power-ups para alcanzar la mayor puntuación posible.
 
 ---
 
-## 📦 Instalación
+## Instalación
 
 ### Requisitos previos
 Asegúrate de tener instalado:
@@ -41,29 +41,29 @@ Asegúrate de tener instalado:
 
 ---
 
-## 🎮 Cómo jugar
+## Cómo jugar
 
 ### Controles básicos
-| Acción | Tecla                  |
-|--------|------------------------|
-| Mover arriba | ↑                      |
-| Mover abajo | ↓                      |
-| Mover izquierda | ←                      |
-| Mover derecha | →                      |
+| Acción | Tecla |
+|--------|--------|
+| Mover arriba | ↑ o W |
+| Mover abajo | ↓ o S |
+| Mover izquierda | ← o A |
+| Mover derecha | → o D |
 | Dash (impulso rápido) | Doble tap en dirección |
-| Disparo | Z y X                  |
-| Pausa | ESC                    |
-| Volver al menú | M                      |
+| Disparo | Barra espaciadora |
+| Pausa | ESC |
+| Volver al menú | M |
 
 ### Objetivo
 Sobrevive el mayor tiempo posible esquivando obstáculos y destruyendo enemigos.  
 Recolecta **power-ups** para mejorar tus habilidades y acumula puntaje.
 
 ### Power-ups disponibles
-- 💛 **Vida extra:** recupera una vida.  
-- ⚡ **Velocidad:** incrementa temporalmente la rapidez de movimiento.  
-- 🛡️ **Invencibilidad:** no recibes daño por un tiempo limitado.  
-- ✴️ **Multiplicador de puntos:** aumenta las ganancias de puntaje.
+- **Vida extra:** recupera una vida.  
+-  **Velocidad:** incrementa temporalmente la rapidez de movimiento.  
+-  **Invencibilidad:** no recibes daño por un tiempo limitado.  
+-  **Multiplicador de puntos:** aumenta las ganancias de puntaje.
 
 ### Fin del juego
 - Si pierdes todas tus vidas, aparecerá la **pantalla de Game Over**.  
@@ -71,37 +71,23 @@ Recolecta **power-ups** para mejorar tus habilidades y acumula puntaje.
 
 ---
 
-## 🧩 Estructura del proyecto
+## Estructura del proyecto
 
 ```
 core/
- ├── src/main/java/puppy.code
+ ├── puppy/code/
+ │   ├── SpaceNavigation.java         # Clase principal del juego
+ │   ├── entidades/                   # Nave, balas, enemigos
  │   ├── powerups/                    # Tipos de Power-Ups
- │   ├── Ball2.java                   # Funcionamiento de Asteroides
- │   ├── Bullet.java                  # Funcionamiento de Balas
- │   ├── EntidadJuego.java            # Funcionamiento de Entidades
- │   ├── Nave4.java                   # Funcionamiento de Nave (jugador)
- │   ├── PantallaGameOver.java        # Funcionamiento de Pantalla de derrota
- │   ├── PantallaJuego.java           # Funcionamiento general para el juego
- │   ├── PantallaMenu.java            # Funcionamiento Menu principal
- │   ├── PantallaPowerups.java        # Funcionamiento escenario para Powerups
- │   ├── PantallaTutorial.java        # Funcionamiento para Tutorial
- │   ├── PowerUpManager.java          # Funcionamiento general para powerUps
- │   ├── SpaceNavegation.java
-lwjgl3/src/main/java/puppy.codelwjgl3
- ├── Lwjgl3Launcher.java              # Lanzador para PC
+ │   ├── pantallas/                   # Menu, Juego, GameOver, etc.
+desktop/
+ ├── puppy/code/lwjgl3/Lwjgl3Launcher.java  # Lanzador para PC
 ```
 
 ---
-## 💾 Configuración adicional
+
+## Configuración adicional
 
 - **Puntuación más alta:** se guarda automáticamente en memoria mientras dura la ejecución (en próximas versiones se persistirá).
 - **Texturas y sonidos:** se cargan desde la carpeta `assets/`.
 
----
-
-## 🧠 Créditos
-
-Desarrollado por **[Tu nombre o equipo]**  
-Basado en proyecto inicial de **libGDX Space Navigation**  
-Licencia: uso educativo y libre distribución.
