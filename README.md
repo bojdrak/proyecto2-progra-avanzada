@@ -44,16 +44,16 @@ Asegúrate de tener instalado:
 ## Cómo jugar
 
 ### Controles básicos
-| Acción | Tecla |
-|--------|--------|
-| Mover arriba | ↑ o W |
-| Mover abajo | ↓ o S |
-| Mover izquierda | ← o A |
-| Mover derecha | → o D |
+| Acción | Tecla                  |
+|--------|------------------------|
+| Mover arriba | ↑                      |
+| Mover abajo | ↓                      |
+| Mover izquierda | ←                      |
+| Mover derecha | →                      |
 | Dash (impulso rápido) | Doble tap en dirección |
-| Disparo | Barra espaciadora |
-| Pausa | ESC |
-| Volver al menú | M |
+| Disparo | Z y X                  |
+| Pausa | ESC                    |
+| Volver al menú | M                      |
 
 ### Objetivo
 Sobrevive el mayor tiempo posible esquivando obstáculos y destruyendo enemigos.  
@@ -75,18 +75,30 @@ Recolecta **power-ups** para mejorar tus habilidades y acumula puntaje.
 
 ```
 core/
- ├── puppy/code/
- │   ├── SpaceNavigation.java         # Clase principal del juego
- │   ├── entidades/                   # Nave, balas, enemigos
+ ├── src/main/java/puppy.code
  │   ├── powerups/                    # Tipos de Power-Ups
- │   ├── pantallas/                   # Menu, Juego, GameOver, etc.
-desktop/
- ├── puppy/code/lwjgl3/Lwjgl3Launcher.java  # Lanzador para PC
+ │   ├── Ball2.java                   # Funcionamiento de Asteroides
+ │   ├── Bullet.java                  # Funcionamiento de Balas
+ │   ├── EntidadJuego.java            # Funcionamiento de Entidades
+ │   ├── Nave4.java                   # Funcionamiento de Nave (jugador)
+ │   ├── PantallaGameOver.java        # Funcionamiento de Pantalla de derrota
+ │   ├── PantallaJuego.java           # Funcionamiento general para el juego
+ │   ├── PantallaMenu.java            # Funcionamiento Menu principal
+ │   ├── PantallaPowerups.java        # Funcionamiento escenario para Powerups
+ │   ├── PantallaTutorial.java        # Funcionamiento para Tutorial
+ │   ├── PowerUpManager.java          # Funcionamiento general para powerUps
+ │   ├── SpaceNavegation.java
+lwjgl3/src/main/java/puppy.codelwjgl3
+ ├── Lwjgl3Launcher.java              # Lanzador para PC
 ```
 
 ---
+<<<<<<< HEAD
+## 💾 Configuración adicional
+=======
 
 ## Configuración adicional
+>>>>>>> 555dc160d43f5983c58da030ed68754f11d87416
 
 - **Puntuación más alta:** se guarda automáticamente en memoria mientras dura la ejecución (en próximas versiones se persistirá).
 - **Texturas y sonidos:** se cargan desde la carpeta `assets/`.
