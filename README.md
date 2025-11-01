@@ -14,7 +14,7 @@ Asegúrate de tener instalado:
 
 ### Instalación paso a paso
 1. **Descargar el proyecto**
-   - Extrae el archivo `juego naves.zip` en una carpeta local.  
+   - Extrae el archivo `proyecto2-progra-avanzada.zip` en una carpeta local.  
      Ejemplo:  
      ```
      C:\Users\<usuario>\Documents\SpaceNavigation
