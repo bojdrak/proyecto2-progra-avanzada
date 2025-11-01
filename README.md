@@ -1,33 +1,100 @@
-# SpaceNav2025
+# 🚀 Space Navigation
+**Proyecto Java (libGDX)** – Juego tipo *arcade shooter* donde controlas una nave que debe esquivar enemigos y recolectar power-ups para alcanzar la mayor puntuación posible.
 
-A [libGDX](https://libgdx.com/) project generated with [gdx-liftoff](https://github.com/libgdx/gdx-liftoff).
+---
 
-This project was generated with a template including simple application launchers and an `ApplicationAdapter` extension that draws libGDX logo.
+## 📦 Instalación
 
-## Platforms
+### Requisitos previos
+Asegúrate de tener instalado:
+- **Java JDK 17** o superior  
+  (Verifica con `java -version`)
+- **Gradle** (opcional, ya incluido si usas un IDE como IntelliJ o Eclipse)
+- **Git** (opcional, si clonas el repositorio)
 
-- `core`: Main module with the application logic shared by all platforms.
-- `lwjgl3`: Primary desktop platform using LWJGL3; was called 'desktop' in older docs.
+### Instalación paso a paso
+1. **Descargar el proyecto**
+   - Extrae el archivo `juego naves.zip` en una carpeta local.  
+     Ejemplo:  
+     ```
+     C:\Users\<usuario>\Documents\SpaceNavigation
+     ```
 
-## Gradle
+2. **Abrir el proyecto**
+   - Abre la carpeta en tu IDE preferido (IntelliJ IDEA, Eclipse, VSCode con extensión Java).
+   - Si el IDE pregunta, selecciona “Importar proyecto Gradle”.
 
-This project uses [Gradle](https://gradle.org/) to manage dependencies.
-The Gradle wrapper was included, so you can run Gradle tasks using `gradlew.bat` or `./gradlew` commands.
-Useful Gradle tasks and flags:
+3. **Verificar dependencias**
+   - Gradle descargará automáticamente las librerías de **libGDX** al compilar.
 
-- `--continue`: when using this flag, errors will not stop the tasks from running.
-- `--daemon`: thanks to this flag, Gradle daemon will be used to run chosen tasks.
-- `--offline`: when using this flag, cached dependency archives will be used.
-- `--refresh-dependencies`: this flag forces validation of all dependencies. Useful for snapshot versions.
-- `build`: builds sources and archives of every project.
-- `cleanEclipse`: removes Eclipse project data.
-- `cleanIdea`: removes IntelliJ project data.
-- `clean`: removes `build` folders, which store compiled classes and built archives.
-- `eclipse`: generates Eclipse project data.
-- `idea`: generates IntelliJ project data.
-- `lwjgl3:jar`: builds application's runnable jar, which can be found at `lwjgl3/build/libs`.
-- `lwjgl3:run`: starts the application.
-- `test`: runs unit tests (if any).
+4. **Ejecutar**
+   - Desde tu IDE: busca la clase  
+     ```
+     puppy.code.lwjgl3.Lwjgl3Launcher
+     ```
+     y ejecútala como aplicación Java.  
+   - O desde terminal:
+     ```
+     gradlew desktop:run
+     ```
+     *(en Linux/Mac usa `./gradlew desktop:run`)*
 
-Note that most tasks that are not specific to a single project can be run with `name:` prefix, where the `name` should be replaced with the ID of a specific project.
-For example, `core:clean` removes `build` folder only from the `core` project.
+---
+
+## 🎮 Cómo jugar
+
+### Controles básicos
+| Acción | Tecla |
+|--------|--------|
+| Mover arriba | ↑ o W |
+| Mover abajo | ↓ o S |
+| Mover izquierda | ← o A |
+| Mover derecha | → o D |
+| Dash (impulso rápido) | Doble tap en dirección |
+| Disparo | Barra espaciadora |
+| Pausa | ESC |
+| Volver al menú | M |
+
+### Objetivo
+Sobrevive el mayor tiempo posible esquivando obstáculos y destruyendo enemigos.  
+Recolecta **power-ups** para mejorar tus habilidades y acumula puntaje.
+
+### Power-ups disponibles
+- 💛 **Vida extra:** recupera una vida.  
+- ⚡ **Velocidad:** incrementa temporalmente la rapidez de movimiento.  
+- 🛡️ **Invencibilidad:** no recibes daño por un tiempo limitado.  
+- ✴️ **Multiplicador de puntos:** aumenta las ganancias de puntaje.
+
+### Fin del juego
+- Si pierdes todas tus vidas, aparecerá la **pantalla de Game Over**.  
+- Desde allí puedes volver al menú principal o reiniciar una nueva partida.
+
+---
+
+## 🧩 Estructura del proyecto
+
+```
+core/
+ ├── puppy/code/
+ │   ├── SpaceNavigation.java         # Clase principal del juego
+ │   ├── entidades/                   # Nave, balas, enemigos
+ │   ├── powerups/                    # Tipos de Power-Ups
+ │   ├── pantallas/                   # Menu, Juego, GameOver, etc.
+desktop/
+ ├── puppy/code/lwjgl3/Lwjgl3Launcher.java  # Lanzador para PC
+```
+
+---
+
+## 💾 Configuración adicional
+
+- **Puntuación más alta:** se guarda automáticamente en memoria mientras dura la ejecución (en próximas versiones se persistirá).
+- **Texturas y sonidos:** se cargan desde la carpeta `assets/`.
+
+---
+
+## 🧠 Créditos
+
+Desarrollado por **[Tu nombre o equipo]**  
+Basado en proyecto inicial de **libGDX Space Navigation**  
+Licencia: uso educativo y libre distribución.
