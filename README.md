@@ -67,7 +67,7 @@ Recolecta **power-ups** para mejorar tus habilidades y acumula puntaje.
 
 ### Fin del juego
 - Si pierdes todas tus vidas, aparecerá la **pantalla de Game Over**.  
-- Desde allí puedes volver al menú principal o reiniciar una nueva partida.
+- Desde allí puedes volver a presionar para reiniciar a una nueva partida.
 
 ---
 
