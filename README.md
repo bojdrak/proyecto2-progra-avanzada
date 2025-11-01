@@ -60,7 +60,7 @@ Sobrevive el mayor tiempo posible esquivando obstáculos y destruyendo enemigos.
 Recolecta **power-ups** para mejorar tus habilidades y acumula puntaje.
 
 ### Power-ups disponibles
-- **Vida extra:** recupera una vida.  
+-  **Vida extra:** recupera una vida.  
 -  **Velocidad:** incrementa temporalmente la rapidez de movimiento.  
 -  **Invencibilidad:** no recibes daño por un tiempo limitado.  
 -  **Multiplicador de puntos:** aumenta las ganancias de puntaje.
@@ -93,12 +93,7 @@ lwjgl3/src/main/java/puppy.codelwjgl3
 ```
 
 ---
-<<<<<<< HEAD
-## 💾 Configuración adicional
-=======
-
 ## Configuración adicional
->>>>>>> 555dc160d43f5983c58da030ed68754f11d87416
 
 - **Puntuación más alta:** se guarda automáticamente en memoria mientras dura la ejecución (en próximas versiones se persistirá).
 - **Texturas y sonidos:** se cargan desde la carpeta `assets/`.
