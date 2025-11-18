@@ -9,13 +9,15 @@ public class SpaceNavigation extends Game {
     private String nombreJuego = "Space Navigation";
     private SpriteBatch batch;
     private BitmapFont font;
-    private int highScore;
 
     public void create() {
-        highScore = 0;
         batch = new SpriteBatch();
         font = new BitmapFont();
         font.getData().setScale(2f);
+
+        // Inicializar el GameManager
+        GameManager.getInstance().setHighScore(0);
+
         Screen ss = new PantallaMenu(this);
         this.setScreen(ss);
     }
@@ -27,6 +29,9 @@ public class SpaceNavigation extends Game {
     public void dispose() {
         batch.dispose();
         font.dispose();
+        // Limpiar Singletons
+        GameManager.getInstance().dispose();
+        ResourceManager.getInstance().dispose();
     }
 
     public SpriteBatch getBatch() {
@@ -37,11 +42,12 @@ public class SpaceNavigation extends Game {
         return font;
     }
 
+    // Los métodos de high score ahora se delegan al GameManager
     public int getHighScore() {
-        return highScore;
+        return GameManager.getInstance().getHighScore();
     }
 
     public void setHighScore(int highScore) {
-        this.highScore = highScore;
+        GameManager.getInstance().setHighScore(highScore);
     }
 }
