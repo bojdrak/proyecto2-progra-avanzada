@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Rectangle;
 import puppy.code.Nave4;
 import puppy.code.EntidadJuego;
 
-public abstract class PowerUp implements EntidadJuego{
+public abstract class  PowerUp implements EntidadJuego{
     protected Sprite spr;
     protected boolean activo;
     protected float x, y;

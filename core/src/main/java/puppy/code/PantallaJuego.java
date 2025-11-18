@@ -187,11 +187,10 @@ public class PantallaJuego implements Screen {
 
         // Game over
         if (nave.estaDestruido()) {
-            if (score > game.getHighScore())
+            if (score > game.getHighScore()) {
                 game.setHighScore(score);
-            Screen ss = new PantallaGameOver(game);
-            ss.resize(1200, 800);
-            game.setScreen(ss);
+            }
+            game.setScreen(new PantallaGameOver(game));
             dispose();
         }
 
@@ -253,10 +252,16 @@ public class PantallaJuego implements Screen {
     private void avanzarAlSiguienteNivel() {
         Gdx.app.log("PantallaJuego", "Avanzando al siguiente nivel...");
         int nuevosAsteroides = cantAsteroides + 2;
-        Screen ss = new PantallaJuego(game, ronda + 1, nave.getVidas(), score,
-            velXAsteroides + 1, velYAsteroides + 1, nuevosAsteroides);
-        ss.resize(1200, 800);
-        game.setScreen(ss);
+
+        game.setScreen(new PantallaJuego(
+            game,
+            ronda + 1,
+            nave.getVidas(),
+            score,
+            velXAsteroides + 1,
+            velYAsteroides + 1,
+            nuevosAsteroides
+        ));
         dispose();
     }
 
