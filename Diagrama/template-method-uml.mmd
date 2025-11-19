@@ -1,0 +1,99 @@
+classDiagram
+    direction LR
+
+    class Screen {
+        <<interface>>
+        +show()
+        +render(delta: float)
+        +resize(width:int, height:int)
+        +pause()
+        +resume()
+        +hide()
+        +dispose()
+    }
+
+    class SpaceNavigation {
+        -batch : SpriteBatch
+        -font : BitmapFont
+        -highScore : int
+        +getBatch() : SpriteBatch
+        +getFont() : BitmapFont
+        +getHighScore() : int
+        +setHighScore(score:int) : void
+        +setScreen(screen: Screen) : void
+    }
+
+    class PantallaBase {
+        <<abstract>>
+        #game : SpaceNavigation
+        #camera : OrthographicCamera
+        #batch : SpriteBatch
+        +PantallaBase(game: SpaceNavigation)
+        +final render(delta: float) : void
+        #limpiarPantalla() : void
+        #actualizarCamara() : void
+        #configurarCamara() : void
+        #abstract actualizarLogica(delta: float) : void
+        #abstract dibujar(delta: float) : void
+    }
+
+    class PantallaMenu {
+        +PantallaMenu(game: SpaceNavigation)
+        #actualizarLogica(delta: float) : void
+        #dibujar(delta: float) : void
+    }
+
+    class PantallaTutorial {
+        -texturaNave : Texture
+        -texturaAsteroide : Texture
+        -spriteNave : Sprite
+        -spriteAsteroide : Sprite
+        +PantallaTutorial(game: SpaceNavigation)
+        #actualizarLogica(delta: float) : void
+        #dibujar(delta: float) : void
+        +dispose() : void
+    }
+
+    class PantallaGameOver {
+        +PantallaGameOver(game: SpaceNavigation)
+        #actualizarLogica(delta: float) : void
+        #dibujar(delta: float) : void
+    }
+
+    class PantallaPowerUps {
+        -powerUpManager : PowerUpManager
+        -nave : Nave4
+        -siguienteRonda : int
+        -vidas : int
+        -score : int
+        -velXAsteroides : int
+        -velYAsteroides : int
+        -cantAsteroides : int
+        -tiempoRestante : int
+        +PantallaPowerUps(game: SpaceNavigation, mgr: PowerUpManager, sigRonda:int, vidas:int, score:int, vx:int, vy:int, cant:int)
+        #actualizarLogica(delta: float) : void
+        #dibujar(delta: float) : void
+        -avanzarAlSiguienteNivel() : void
+    }
+
+    class PantallaJuego {
+        +PantallaJuego(game: SpaceNavigation, ronda:int, vidas:int, score:int, vx:int, vy:int, cant:int)
+        +render(delta: float) : void
+        +agregarBala(bb: Bullet) : boolean
+    }
+
+%% Relaciones principales del patrón
+    PantallaBase ..|> Screen
+    PantallaMenu --|> PantallaBase
+    PantallaTutorial --|> PantallaBase
+    PantallaGameOver --|> PantallaBase
+    PantallaPowerUps --|> PantallaBase
+
+%% Uso entre clases
+    SpaceNavigation --> Screen : setScreen()
+    SpaceNavigation --> PantallaMenu : crea
+
+    PantallaMenu --> PantallaTutorial : navega a
+    PantallaTutorial --> PantallaJuego : comienza juego
+    PantallaGameOver --> PantallaJuego : reinicia juego
+    PantallaPowerUps --> PantallaJuego : siguiente nivel
