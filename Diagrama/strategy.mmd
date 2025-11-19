@@ -1,0 +1,20 @@
+classDiagram
+    class Nave4 {
+        -EstrategiaDisparo estrategiaDisparo
+        +setEstrategiaDisparo(e:EstrategiaDisparo)
+        +draw(batch, juego)
+    }
+
+    class EstrategiaDisparo {
+        <<interface>>
+        +disparar(nave:Nave4, juego:PantallaJuego)
+    }
+
+    class DisparoRapido
+    class DisparoLento
+    class DisparoTriple
+
+    Nave4 --> EstrategiaDisparo
+    EstrategiaDisparo <|.. DisparoRapido
+    EstrategiaDisparo <|.. DisparoLento
+    EstrategiaDisparo <|.. DisparoTriple

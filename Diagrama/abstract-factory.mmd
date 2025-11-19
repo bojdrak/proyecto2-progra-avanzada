@@ -1,0 +1,38 @@
+classDiagram
+    class PowerUpFactory {
+        <<interface>>
+        +crearVida(x,y): PowerUp
+        +crearVelocidad(x,y): PowerUp
+        +crearInvencibilidad(x,y): PowerUp
+        +crearMultiplicador(x,y): PowerUp
+    }
+
+    class PowerUpFactoryFacil
+    class PowerUpFactoryDificil
+
+    class PowerUpManager {
+        -factory: PowerUpFactory
+        +setFactory(f:PowerUpFactory)
+        +generarPowerUpsAleatorios()
+    }
+
+    class PowerUp
+    class PowerUpVida
+    class PowerUpVelocidad
+    class PowerUpInvencibilidad
+    class PowerUpMultiplicadorPuntos
+
+    PowerUpFactory <|.. PowerUpFactoryFacil
+    PowerUpFactory <|.. PowerUpFactoryDificil
+
+    PowerUpManager --> PowerUpFactory
+
+    PowerUpFactoryFacil --> PowerUpVida
+    PowerUpFactoryFacil --> PowerUpVelocidad
+    PowerUpFactoryFacil --> PowerUpInvencibilidad
+    PowerUpFactoryFacil --> PowerUpMultiplicadorPuntos
+
+    PowerUpFactoryDificil --> PowerUpVida
+    PowerUpFactoryDificil --> PowerUpVelocidad
+    PowerUpFactoryDificil --> PowerUpInvencibilidad
+    PowerUpFactoryDificil --> PowerUpMultiplicadorPuntos
