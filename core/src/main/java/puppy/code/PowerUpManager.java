@@ -9,11 +9,13 @@ import com.badlogic.gdx.math.Rectangle;
 import puppy.code.powerups.*;
 import java.util.ArrayList;
 import java.util.Random;
+import puppy.code.powerups.factory.*;
 
 public class PowerUpManager {
     private ArrayList<PowerUp> powerUps;
     private Texture[] texturasPowerUps;
     private Random random;
+    private PowerUpFactory factory;
 
     // Efectos temporales activos
     private boolean invencibilidadActiva = false;
@@ -28,6 +30,10 @@ public class PowerUpManager {
         powerUps = new ArrayList<>();
         random = new Random();
         texturasPowerUps = new Texture[4];
+        factory = new PowerUpFactoryFacil(texturasPowerUps);
+    }
+    public void setFactory(PowerUpFactory factory) {
+        this.factory = factory;
     }
 
     public void cargarTexturas() {
@@ -83,12 +89,21 @@ public class PowerUpManager {
     }
 
     private PowerUp crearPowerUp(int tipo, float x, float y) {
+        if (factory == null) {
+            return null;
+        }
+
         switch (tipo) {
-            case 0: return new PowerUpVida(x, y, texturasPowerUps[0]);
-            case 1: return new PowerUpVelocidad(x, y, texturasPowerUps[1]);
-            case 2: return new PowerUpInvencibilidad(x, y, texturasPowerUps[2]);
-            case 3: return new PowerUpMultiplicadorPuntos(x, y, texturasPowerUps[3]);
-            default: return null;
+            case 0:
+                return factory.crearVida(x, y);
+            case 1:
+                return factory.crearVelocidad(x, y);
+            case 2:
+                return factory.crearInvencibilidad(x, y);
+            case 3:
+                return factory.crearMultiplicador(x, y);
+            default:
+                return null;
         }
     }
 
