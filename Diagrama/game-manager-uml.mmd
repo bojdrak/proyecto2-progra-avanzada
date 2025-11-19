@@ -1,0 +1,29 @@
+classDiagram
+    class GameManager {
+        - instance
+        - highScore int
+        - soundEffects HashMap
+        + getInstance() GameManager
+        + getHighScore() int
+        + setHighScore()
+        + playSound()
+    }
+
+    class ResourceManager {
+        - instance
+        - textures HashMap
+        + getInstance() ResourceManager
+        + getTexture()
+    }
+
+    class PantallaJuego {
+        + render()
+    }
+
+    class PantallaMenu {
+        + render()
+    }
+
+    PantallaJuego --> GameManager
+    PantallaMenu --> GameManager
+    PantallaJuego --> ResourceManager
