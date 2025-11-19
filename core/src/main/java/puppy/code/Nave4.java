@@ -1,5 +1,6 @@
 package puppy.code;
 
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Sound;
@@ -8,6 +9,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
+import puppy.code.disparo.EstrategiaDisparo;
+import puppy.code.disparo.DisparoRapido;
+import puppy.code.disparo.DisparoLento;
 
 public class Nave4 {
 
@@ -22,6 +26,7 @@ public class Nave4 {
     private boolean herido = false;
     private int tiempoHeridoMax = 50;
     private int tiempoHerido;
+    private EstrategiaDisparo estrategiaDisparo;
 
     // Nuevas variables para movimiento snappy y dash
     private float velocidadBase = 8f;
@@ -50,6 +55,8 @@ public class Nave4 {
         spr = new Sprite(tx);
         spr.setPosition(x, y);
         spr.setBounds(x, y, 45, 45);
+        this.estrategiaDisparo = new DisparoRapido();
+
     }
 
     public void draw(SpriteBatch batch, PantallaJuego juego) {
@@ -82,16 +89,17 @@ public class Nave4 {
 
         // Disparo
         if (Gdx.input.isKeyJustPressed(Input.Keys.Z)) {
-            Bullet bala = new Bullet(spr.getX() + spr.getWidth() / 2 - 5,
-                spr.getY() + spr.getHeight() - 5, 0, 15, txBala);
-            juego.agregarBala(bala);
-            soundBala.play();
+            if (estrategiaDisparo != null) {
+                estrategiaDisparo.disparar(this, juego);
+            }
         }
+
+        // X: cambia a disparo lento y dispara inmediatamente
         if (Gdx.input.isKeyJustPressed(Input.Keys.X)) {
-            Bullet bala = new Bullet(spr.getX() + spr.getWidth() / 2 - 5,
-                spr.getY() + spr.getHeight() - 5, 0, 5, txBala);
-            juego.agregarBala(bala);
-            soundBala.play();
+            setEstrategiaDisparo(new DisparoLento());
+            if (estrategiaDisparo != null) {
+                estrategiaDisparo.disparar(this, juego);
+            }
         }
     }
 
@@ -311,4 +319,24 @@ public class Nave4 {
     public int getX() { return (int) spr.getX(); }
     public int getY() { return (int) spr.getY(); }
     public void setVidas(int vidas2) { vidas = vidas2; }
+    public Texture getTexturaBala() {
+        return txBala;
+    }
+
+    public Sound getSoundBala() {
+        return soundBala;
+    }
+
+    public int getAncho() {
+        return (int) spr.getWidth();
+    }
+
+    public int getAlto() {
+        return (int) spr.getHeight();
+    }
+
+    public void setEstrategiaDisparo(EstrategiaDisparo estrategiaDisparo) {
+        this.estrategiaDisparo = estrategiaDisparo;
+    }
+
 }
